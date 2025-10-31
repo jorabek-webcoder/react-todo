@@ -3,6 +3,8 @@ import Modal from "../modal/modal";
 import { FaEdit } from "react-icons/fa";
 import { useEditTodoMutation } from "../../integration/api/todos-api/todos-api";
 import showToast from "../../utils/toast/toast";
+import Input from "../input/input";
+import Textarea from "../textarea/textarea";
 
 export default function EditTodo({ todo }) {
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -41,10 +43,10 @@ export default function EditTodo({ todo }) {
   return (
     <div>
       {isOpenModal && <Modal close={handleCloseModal} title={"Edit Todo"} isLoading={isLoading} btnName={"Edit"} submit={handlEditTodo} >
-        <input type="text" defaultValue={todo.title} onChange={(e) => setTitle(e.target.value)} autoFocus placeholder="Title" onKeyDown={(e) => e.key === "Enter" && DescRef.current.focus()} className="w-full h-20 border-8 border-[#e2b714] outline-none rounded-2xl px-5 text-3xl font-bold placeholder:opacity-40" />
-        <textarea placeholder="Description" defaultValue={todo.description} onChange={(e) => setDescription(e.target.value)} ref={DescRef} onKeyDown={(e) => e.key === "Enter" && handlEditTodo()} className="w-full max-h-[210px] min-h-[110px] h-20 border-8 border-[#e2b714] outline-none rounded-2xl px-5 py-3 text-3xl font-bold placeholder:opacity-40"></textarea>
+        <Input type="text" defaultValue={todo.title} onChange={(e) => setTitle(e.target.value)} autoFocus placeholder="Title" onKeyDown={(e) => e.key === "Enter" && DescRef.current.focus()} />
+        <Textarea placeholder="Description" defaultValue={todo.description} onChange={(e) => setDescription(e.target.value)} ref={DescRef} onKeyDown={(e) => e.key === "Enter" && handlEditTodo()}  />
       </Modal>}
-      <FaEdit size={30} onClick={handleOpenModal} className="cursor-pointer" />
+      <FaEdit onClick={handleOpenModal} className="cursor-pointer text-xl sm:text-3xl" />
     </div>
   )
 }

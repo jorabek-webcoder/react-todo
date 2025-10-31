@@ -36,7 +36,7 @@ export default function DeleteWarning({ id }) {
         <p className="text-xl font-semibold">Are you sure you want to delete this todo?</p>
         <p className="text-xl font-semibold">This action cannot be undone.</p>
       </Modal>}
-      <MdDelete size={32} onClick={handleOpenModal} className="cursor-pointer" />
+      <MdDelete onClick={handleOpenModal} className="cursor-pointer text-2xl sm:text-4xl" />
     </div>
   )
 }

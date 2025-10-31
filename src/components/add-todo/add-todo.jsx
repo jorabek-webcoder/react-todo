@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import Modal from "../modal/modal";
 import showToast from "../../utils/toast/toast";
 import { useAddTodoMutation } from "../../integration/api/todos-api/todos-api";
+import Input from "../input/input";
+import Textarea from "../textarea/textarea";
 
 export default function AddTodo() {
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -35,11 +37,11 @@ export default function AddTodo() {
 
     return (
         <div>
-            {isOpenModal && <Modal close={handleCloseModal} title={"Add Todo"} isLoading={isLoading} btnName={"Add"} submit={handleAddTodo} >
-                <input type="text" autoFocus defaultValue={title} placeholder="Title" onKeyDown={(e) => e.key === "Enter" && DescRef.current.focus()} onChange={(e) => setTitle(e.target.value)} className="w-full h-20 border-8 border-[#e2b714] outline-none rounded-2xl px-5 text-3xl font-bold placeholder:opacity-40" />
-                <textarea placeholder="Description" defaultValue={description} ref={DescRef} onKeyDown={(e) => e.key === "Enter" && handleAddTodo()} onChange={(e) => setDescription(e.target.value)} className="w-full max-h-[200px] min-h-[70px] h-20 border-8 border-[#e2b714] outline-none rounded-2xl px-5 py-3 text-3xl font-bold placeholder:opacity-40"></textarea>
+            {isOpenModal && <Modal close={handleCloseModal} title={"Add Todo"} isLoading={isLoading} btnName={"Add"} submit={handleAddTodo}>
+                <Input type="text" autoFocus={true} defaultValue={title} placeholder="Title" onKeyDown={(e) => e.key === "Enter" && DescRef.current.focus()} onChange={(e) => setTitle(e.target.value)} />
+                <Textarea placeholder="Description" defaultValue={description} ref={DescRef} onKeyDown={(e) => e.key === "Enter" && handleAddTodo()} onChange={(e) => setDescription(e.target.value)} />
             </Modal>}
-            <button onClick={handleOpenModal} className="text-6xl border-8 border-[#e2b714] bg-[#3f4143] rounded-4xl p-4 cursor-pointer">Add Todo</button>
+            <button onClick={handleOpenModal} className="text-xl sm:text-4xl md:text-6xl border-4 md:border-8 border-[#e2b714] bg-[#3f4143] rounded-2xl md:rounded-4xl p-2 sm:p-4 cursor-pointer">Add Todo</button>
         </div>
     )
 }

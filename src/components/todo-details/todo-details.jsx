@@ -11,7 +11,7 @@ export default function TodoDetails({ todo, isLoading }) {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [completedTodo, { isLoading: isCompletedLoading }] = useCompleteTodoMutation()
   const { data: getTodo, isLoading: isLoadingTodo } = useGetTodoQuery(
-    { id: todo?._id }, 
+    { id: todo?._id },
     { skip: !isOpenModal || !todo?._id }
   )
 
@@ -50,16 +50,16 @@ export default function TodoDetails({ todo, isLoading }) {
           <div className="w-full flex items-center gap-4">
             <button disabled={isCompletedLoading} onClick={handleCompleteTodo}>
               {isCompletedLoading ? (
-                <IoReloadCircleSharp className="animate-spin" size={30} />
+                <IoReloadCircleSharp className="animate-spin text-xl sm:text-3xl" />
               ) : todo.completed ? (
-                <FaCheckSquare size={30} className="cursor-pointer" />
+                <FaCheckSquare className="cursor-pointer text-xl sm:text-3xl" />
               ) : (
-                <FaRegSquareCheck size={30} className="cursor-pointer" />
+                <FaRegSquareCheck className="cursor-pointer text-xl sm:text-3xl" />
               )}
 
             </button>
             <div onClick={handleOpenModal} className="w-full h-full cursor-pointer">
-              <h2 className="text-2xl font-bold">{todo.title}</h2>
+              <h2 className="text-xl sm:text-2xl font-bold">{todo.title.length > 8 ? todo.title.slice(0, 8) + "..." : todo.title}</h2>
             </div>
           </div>
 
