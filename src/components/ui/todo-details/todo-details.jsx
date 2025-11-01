@@ -32,8 +32,8 @@ export default function TodoDetails({ todo, isLoading }) {
   }
 
   if (isLoading) {
-    return (<div className="w-full p-5 bg-[#3f4143] rounded-2xl border-4 border-[#e2b714] flex justify-between gap-4 ">
-      <h2 className="text-2xl font-bold">Loading...</h2>
+    return (<div className="w-full p-3 sm:p-5 bg-[#3f4143] rounded-2xl border-4 border-[#e2b714] flex justify-between gap-2 sm:gap-4 ">
+      <h2 className="text-xl sm:text-2xl font-bold">Loading...</h2>
     </div>)
   }
 
@@ -68,9 +68,10 @@ export default function TodoDetails({ todo, isLoading }) {
             <DeleteWarning id={todo._id} />
           </div>
         </div>
-      ) : (<div className="w-full p-5 bg-[#3f4143] rounded-2xl border-4 border-[#e2b714] flex justify-between gap-4 ">
-        <h2 className="text-2xl font-bold">Todos not found</h2>
-      </div>)}
+      ) : (
+        <div className="w-full p-3 sm:p-5 bg-[#3f4143] rounded-2xl border-4 border-[#e2b714] flex justify-between gap-2 sm:gap-4">
+          <h2 className="text-xl sm:text-2xl font-bold">Todos not found</h2>
+        </div>)}
 
     </div>
   )
