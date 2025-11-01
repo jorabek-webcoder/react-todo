@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
-import Modal from "../modal/modal";
-import showToast from "../../utils/toast/toast";
-import { useAddTodoMutation } from "../../integration/api/todos-api/todos-api";
-import Input from "../input/input";
-import Textarea from "../textarea/textarea";
+import Modal from "../../common/modal/modal";
+import showToast from "../../../utils/toast/toast";
+import { useAddTodoMutation } from "../../../integration/api/todos-api/todos-api";
+import Input from "../../common/input/input";
+import Textarea from "../../common/textarea/textarea";
+import Button from "../../common/button/button";
 
 export default function AddTodo() {
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -41,7 +42,7 @@ export default function AddTodo() {
                 <Input type="text" autoFocus={true} defaultValue={title} placeholder="Title" onKeyDown={(e) => e.key === "Enter" && DescRef.current.focus()} onChange={(e) => setTitle(e.target.value)} />
                 <Textarea placeholder="Description" defaultValue={description} ref={DescRef} onKeyDown={(e) => e.key === "Enter" && handleAddTodo()} onChange={(e) => setDescription(e.target.value)} />
             </Modal>}
-            <button onClick={handleOpenModal} className="text-xl sm:text-4xl md:text-6xl border-4 md:border-8 border-[#e2b714] bg-[#3f4143] rounded-2xl md:rounded-4xl p-2 sm:p-4 cursor-pointer">Add Todo</button>
+            <Button type="big" onClick={handleOpenModal}>Add Todo</Button>
         </div>
     )
 }

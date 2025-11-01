@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import AddTodo from "../../components/add-todo/add-todo"
-import TodoDetails from "../../components/todo-details/todo-details"
 import { useGetAllTodosQuery } from "../../integration/api/todos-api/todos-api";
+import AddTodo from "../../components/ui/add-todo/add-todo";
+import TodoDetails from "../../components/ui/todo-details/todo-details";
 
 function Todos() {
   const { data: todos, isLoading } = useGetAllTodosQuery();
